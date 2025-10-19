@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.tooling.preview.Preview
 
 
 val ColorStart = Color(0xFF673AB7)
@@ -28,7 +29,6 @@ fun AppBarHome(name: String) {
             .fillMaxWidth()
             .height(180.dp)
             .padding(horizontal = 4.dp)
-            .padding(vertical = 4.dp)
             .clip(RoundedCornerShape(32.dp))
             .background(
                 brush = Brush.verticalGradient(
@@ -41,7 +41,7 @@ fun AppBarHome(name: String) {
             modifier = Modifier
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.statusBars)
-                .padding(top = 16.dp, start = 16.dp, bottom = 16.dp),
+                .padding( start = 16.dp, bottom = 16.dp),
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -50,31 +50,48 @@ fun AppBarHome(name: String) {
             ) {
                 IconButton(onClick = {}) {
                     Icon(
-                        imageVector = Icons.Filled.Search,
+                        imageVector = Icons.Filled.Menu,
                         contentDescription = "Search",
                         tint = Color.White
                     )
                 }
                 IconButton(onClick = {}) {
                     Icon(
-                        imageVector = Icons.Filled.Menu,
+                        imageVector = Icons.Filled.Search,
                         contentDescription = "Menu",
                         tint = Color.White
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "Good Morning!",
-                color = Color.White.copy(alpha = 0.8f),
-                fontSize = 18.sp
-            )
-            Text(
-                text = name,
-                color = Color.White,
-                fontSize = 32.sp,
-                fontWeight = FontWeight.ExtraBold
-            )
+            Column {
+                Text(
+                    text = "Good Morning!",
+                    color = Color.White.copy(alpha = 0.8f),
+                    fontSize = 18.sp
+                )
+                Text(
+                    text = name,
+                    color = Color.White ,
+                    fontSize = 32.sp,
+                    fontWeight = FontWeight.ExtraBold
+                )
+            }
+
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun AppBarHomePreview() {
+    MaterialTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFF121212))
+                .padding(16.dp)
+        ) {
+            AppBarHome(name = "Juan Frausto")
         }
     }
 }

@@ -28,10 +28,7 @@ import kotlinx.serialization.InternalSerializationApi
 
 @OptIn(InternalSerializationApi::class)
 @Composable
-fun AlbumCardHorizontal(
-    onClick: (String) -> Unit,
-    album: Album
-) {
+fun AlbumCardHorizontal(album: Album, onClick: (String) -> Unit) {
     Card(
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier
